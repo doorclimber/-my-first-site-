@@ -1,0 +1,15 @@
+{% if user.is_authenticated %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'practice/styles.css' %}">
+{% include "practice/header.html" %}
+<div id='followForm'>
+<p>Type the username of the person you want to follow!</p>
+<form method="post">
+{% csrf_token %}
+{{ form }}
+<button type="submit">Follow</button>
+</form>
+</div>
+{% else %}
+You're not logged in. Please login to see this page.
+{% endif %}

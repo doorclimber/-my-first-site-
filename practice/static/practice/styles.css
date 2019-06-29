@@ -1,0 +1,52 @@
+h1, h2, h3 {
+	color: blue;
+}
+
+h1 {
+	font-size: 40pt;
+}
+
+h2 {
+	text-align: center;
+}
+
+body {
+	background-color: #D3D3D3;
+}
+
+.header {
+  padding: 20px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;
+}
+
+.hlinks {
+	text-decoration: none;
+	padding: 10px;
+	margin: 30px;
+	background-color: #ff33ff;
+}
+
+#postForm {
+	text-align: center;
+}
+
+#feed {
+	width:800px;
+	margin:0 auto;
+	border: 2px solid blue;
+	background-color: white;
+}
+
+.feedPosts{
+	width:600px;
+	margin:0 auto;
+	border: 2px solid blue;
+	padding: 10px;
+}
+
+#followForm {
+	text-align: center;
+}

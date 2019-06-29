@@ -1,0 +1,29 @@
+{% if user.is_authenticated %}
+	<html>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'practice/styles.css' %}">
+		<body>
+			{% include "practice/header.html" %}
+			<br>
+			<div id='postForm'>
+				<p>Post some writing below! Anything you want. It will be shared with your followers.</p>
+				<form method="post">
+				{% csrf_token %}
+				{{ form }}<br>
+				<button type="submit">Submit Writing</button>
+				</form>
+			</div>
+			<div id='feed'>
+				<h2>Your Feed</h2>
+				{% for var in varPosts %}
+				<div class="feedPosts">
+					{{ var.post_text }}
+				</div>
+				<br><br>
+				{% endfor %}
+			</div>
+		</body>
+	</html>
+{% else %}
+	You are not logged in
+{% endif %}
