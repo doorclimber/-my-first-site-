@@ -9,4 +9,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('logout/', views.lout, name='logout'),
     path('follow/', views.followUsers, name='follow'),
+    path('reviews/', views.reviews, name='reviews'),
+
+    path('reviews/ridgefieldlibrary/', views.ridgefieldlibrary, name='ridgefieldlibrary'),
 ]

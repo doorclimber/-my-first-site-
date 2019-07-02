@@ -91,3 +91,9 @@ def followUsers(request):
     else:
         form = folUsers()
     return render(request, 'practice/follow.html', {'form': form})
+
+def reviews(request):
+    return render(request, 'practice/reviews.html')
+
+def ridgefieldlibrary(request):
+    return render(request, 'practice/reviews/ridgefield_library.html')
