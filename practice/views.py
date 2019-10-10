@@ -41,6 +41,9 @@ def getAccountInfo(request):
         form = UserCreationForm()
     return render(request, 'practice/name.html', {'form': form})
 
+def pleaselogin(request):
+    return render(request, 'practice/pleaselogin.html')
+
 def thanks(request):
     return render(request, 'practice/thanks.html')
 
@@ -50,50 +53,63 @@ def lout(request):
 
 def index(request):
     if request.user.is_authenticated:
+        # if this is a POST request we need to process the form data
         if request.method == 'POST':
+            # create a form instance and populate it with data from the request:
             form = postWriting(request.POST)
+            # check whether it's valid:
             if form.is_valid():
+                # process the data in form.cleaned_data as required
                 writing = form.cleaned_data.get('post_text')
                 p1 = profile.objects.get(username=request.user.username)
                 #print(username)
                 info = posts(user=p1,post_text = writing)
                 info.save()
+                # redirect to a new URL:
                 return HttpResponseRedirect('/practice')
         else:
+            # postWriting() creates the correct form unpopulated
             form = postWriting()
-            
+            # Django's SQL integration that creates a list of all people p1 is following
             p1 = profile.objects.get(username=request.user.username)
             p1Follows = p1.follows.all()
-            print(p1Follows)
+            print(p1)
             print(posts.objects.filter(user__in= p1Follows))
             varPosts = posts.objects.filter(Q(user = p1)|Q(user__in= p1Follows)).order_by('-id')[:10]
         
-        
+        # renders new webpage with list of posts taken from SQL database
         return render(request, 'practice/index.html', {'form': form,'varPosts' : varPosts})
     else:
-        return HttpResponse('please login to see this page')
+        # returns 'please login' page
+        return pleaselogin(request) #HttpResponse('please login to see this page')
+    
 def followUsers(request):
-    if request.method == 'POST':
-        form = folUsers(request.POST)
-        if form.is_valid():
-            tUser = form.cleaned_data.get('tried_user')
-            foundUser = profile.objects.filter(username=tUser)
-            if foundUser.count() == 0:
-                print('no user')
-            else:
-                foundUser = profile.objects.get(username=tUser)
-                p1 = profile.objects.get(username=request.user.username)
-                p1.follows.add(foundUser)
-                p1.save()
-                print(p1.follows.all())
-                
-            return HttpResponseRedirect(reverse('thanks'))
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = folUsers(request.POST)
+            if form.is_valid():
+                tUser = form.cleaned_data.get('tried_user')
+                foundUser = profile.objects.filter(username=tUser)
+                if foundUser.count() == 0:
+                    print('no user')
+                else:
+                    foundUser = profile.objects.get(username=tUser)
+                    p1 = profile.objects.get(username=request.user.username)
+                    p1.follows.add(foundUser)
+                    p1.save()
+                    print(p1.follows.all())
+                    
+                return HttpResponseRedirect(reverse('thanks'))
+        else:
+            form = folUsers()
+        return render(request, 'practice/follow.html', {'form': form})
     else:
-        form = folUsers()
-    return render(request, 'practice/follow.html', {'form': form})
+        return pleaselogin(request)
 
 def reviews(request):
     return render(request, 'practice/reviews.html')
 
 def ridgefieldlibrary(request):
     return render(request, 'practice/reviews/ridgefield_library.html')
+
+

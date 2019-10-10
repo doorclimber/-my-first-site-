@@ -1,0 +1,6 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'practice/styles.css' %}">
+{% include "practice/header.html" %}
+Please login to view this page
+<br><br>
+<a href="{% url 'login' %}" class='hlinks'>Login</a>

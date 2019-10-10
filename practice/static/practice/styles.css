@@ -1,5 +1,8 @@
 h1, h2, h3 {
 	color: blue;
+	text-align: center;
+}
+
 }
 
 h1 {
@@ -27,6 +30,11 @@ body {
 	padding: 10px;
 	margin: 30px;
 	background-color: #ff33ff;
+	border-radius: 15px;
+}
+
+.hlinks:hover {
+	background-color: pink;
 }
 
 #postForm {
@@ -43,8 +51,11 @@ body {
 .feedPosts{
 	width:600px;
 	margin:0 auto;
-	border: 2px solid blue;
 	padding: 10px;
+}
+
+fieldset {
+	border: 2px solid blue;
 }
 
 #followForm {
