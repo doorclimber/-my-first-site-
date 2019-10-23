@@ -25,7 +25,7 @@ SECRET_KEY = '^l1#4m8t*vefhx_&!q^q+kx8zgq09&b2vn3!14kgr^)9$wptz)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["doorclimber.pythonanywhere.com",]
 
 
 # Application definition
@@ -118,6 +118,5 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/practice/'
