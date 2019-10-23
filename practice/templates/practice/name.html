@@ -1,13 +1,17 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'practice/styles.css' %}">
+{% include "practice/header.html" %}
 <h2>Hello Everyone! My name is Robert King. Welcome to my site! It's a personal project of mine. <br>
 I wanted to create a simple social media site where users can post text-based content, and follow friends to view other content. <br>
 It was built using the Django framework. The backend is written with Python and MySQL, while the frontend is HTML and CSS. <br>
 Sign up and have a look around!</h2>
 
 {% block content %}
-  <h2>Sign up</h2>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Sign up</button>
   </form>
 {% endblock %}
+
+<h2>Already have an account?</h2><div id="signIn"><a href="{% url 'login' %}" class='hlinks'>Sign in Here!</a></div>
