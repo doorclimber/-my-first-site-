@@ -91,7 +91,8 @@ def followUsers(request):
                 tUser = form.cleaned_data.get('tried_user')
                 foundUser = profile.objects.filter(username=tUser)
                 if foundUser.count() == 0:
-                    print('no user')
+                    print(tUser)
+                    return render(request,'practice/follow.html', {'boo':False, 'form': form, 'tUser':tUser})
                 else:
                     foundUser = profile.objects.get(username=tUser)
                     p1 = profile.objects.get(username=request.user.username)
@@ -99,7 +100,7 @@ def followUsers(request):
                     p1.save()
                     print(p1.follows.all())
                     
-                return HttpResponseRedirect(reverse('thanks'))
+                return render(request,'practice/follow.html', {'boo':True, 'form': form, 'tUser':tUser})
         else:
             form = folUsers()
         return render(request, 'practice/follow.html', {'form': form})

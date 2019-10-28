@@ -25,7 +25,7 @@ SECRET_KEY = '^l1#4m8t*vefhx_&!q^q+kx8zgq09&b2vn3!14kgr^)9$wptz)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["doorclimber.pythonanywhere.com",]
+ALLOWED_HOSTS = ["doorclimber.pythonanywhere.com",'127.0.0.1',]
 
 
 # Application definition

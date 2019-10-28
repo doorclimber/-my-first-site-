@@ -6,6 +6,11 @@
 <p>Type the username of the person you want to follow!</p>
 <form method="post">
 {% csrf_token %}
+{% if boo == False %}
+<p style="color:red">No user with the name {{ tUser }}. Please try again with a different username</p>
+{% elif boo == True %}
+<p> Successfully followed {{ tUser }}!</p>
+{% endif %}
 {{ form }}
 <button type="submit">Follow</button>
 </form>
