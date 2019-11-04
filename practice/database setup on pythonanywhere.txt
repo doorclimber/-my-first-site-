@@ -1,0 +1,9 @@
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'doorclimber$default',
+        'USER': 'doorclimber',
+        'PASSWORD': 'goldeneyes',
+        'HOST': 'doorclimber.mysql.pythonanywhere-services.com',
+    }
+}

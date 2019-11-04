@@ -39,7 +39,7 @@ body {
 	text-align: center;
 }
 
-#feed {
+.feed {
 	width:800px;
 	margin:0 auto;
 	border: 2px solid blue;
@@ -62,4 +62,13 @@ fieldset {
 
 #signIn {
 	text-align: center;
+}
+
+#followfeed{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#followfeedposts{
+    width: 300px;
 }

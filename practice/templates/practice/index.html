@@ -13,7 +13,7 @@
 				<button type="submit">Submit Writing</button>
 				</form>
 			</div>
-			<div id='feed'>
+			<div class='feed'>
 				<h2>Your Feed</h2>
 				{% for var in varPosts %}
 				<div class="feedPosts">
@@ -22,7 +22,7 @@
 					{{ var.post_text }}
 					</fieldset>
 				</div>
-				<br><br>
+				
 				{% endfor %}
 			</div>
 		</body>

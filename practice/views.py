@@ -85,14 +85,17 @@ def index(request):
     
 def followUsers(request):
     if request.user.is_authenticated:
+        p1 = profile.objects.get(username=request.user.username)
+        p1Follows = p1.follows.all()
+        for e in p1Follows:
+            print(e.username)
         if request.method == 'POST':
             form = folUsers(request.POST)
             if form.is_valid():
                 tUser = form.cleaned_data.get('tried_user')
                 foundUser = profile.objects.filter(username=tUser)
                 if foundUser.count() == 0:
-                    print(tUser)
-                    return render(request,'practice/follow.html', {'boo':False, 'form': form, 'tUser':tUser})
+                    return render(request,'practice/follow.html', {'boo':False, 'form': form, 'tUser':tUser, 'p1Follows':p1Follows})
                 else:
                     foundUser = profile.objects.get(username=tUser)
                     p1 = profile.objects.get(username=request.user.username)
@@ -100,10 +103,10 @@ def followUsers(request):
                     p1.save()
                     print(p1.follows.all())
                     
-                return render(request,'practice/follow.html', {'boo':True, 'form': form, 'tUser':tUser})
+                return render(request,'practice/follow.html', {'boo':True, 'form': form, 'tUser':tUser, 'p1Follows':p1Follows})
         else:
             form = folUsers()
-        return render(request, 'practice/follow.html', {'form': form})
+        return render(request, 'practice/follow.html', {'form': form,'p1Follows':p1Follows})
     else:
         return pleaselogin(request)
 

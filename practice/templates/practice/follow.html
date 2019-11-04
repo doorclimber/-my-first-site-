@@ -14,6 +14,19 @@
 {{ form }}
 <button type="submit">Follow</button>
 </form>
+<div class='feed'>
+<h2>list of users you follow</h2>
+<div id="followfeed">
+{% for fol in p1Follows %}
+<div class="feedPosts" id="followfeedposts">
+<fieldset>
+{{ fol.username }}
+</fieldset>
+</div>
+{% endfor %}
+</div>
+</div>
+
 </div>
 {% else %}
 You're not logged in. Please login to see this page.
